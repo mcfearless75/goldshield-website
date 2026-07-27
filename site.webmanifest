@@ -1,0 +1,10 @@
+{
+  "name": "Goldshield",
+  "short_name": "Goldshield",
+  "icons": [
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#0e1a16",
+  "background_color": "#fbf9f3",
+  "display": "browser"
+}
