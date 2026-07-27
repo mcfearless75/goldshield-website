@@ -1,38 +1,50 @@
 # Goldshield — static rebuild
 
-Plain HTML/CSS/JS rebuild of goldshieldtech.co.uk, trimmed down for GitHub Pages
-(no PHP/MySQL/WordPress — GH Pages only serves static files).
+Plain HTML/CSS/JS rebuild of goldshieldtech.co.uk for GitHub Pages (no
+PHP/MySQL/WordPress — GH Pages only serves static files). Built on top of the
+April 2026 recreation (`mcfearless75/goldshield-site`), which is a faithful,
+near pixel-for-pixel match of the live WordPress site — real brand assets
+(GillSans font, all 4 accreditation logos, market sector photography, a
+working Formspree contact form), not a fresh redesign.
 
-## What changed from the old WordPress site
+## What this pass added on top
 
-- **5 pages instead of ~20+.** The old site had a separate page per pack size
-  (e.g. 4 near-identical pages for hand sanitiser alone, each with "Also
-  available in sizes: XXX" left in as an unfinished placeholder). Products are
-  now one page per product line with a pack-size table.
-- **Markets page de-duplicated.** The homepage repeated the full 20-sector list
-  twice with inconsistent sub-tags. Now there's one clean sector grid, linked
-  from the homepage teaser.
-- **Fixed the phone number mismatch.** Header/footer showed the same visible
-  number but linked two different `tel:` numbers. Standardised on
-  +44 (0) 1908 973260 throughout — confirm this is still correct.
-- **Dropped the WordPress/Elementor/Divi/plugin bloat** (~182MB of uploads,
-  238MB database, unused themes and plugins) since none of it is needed for a
-  static site. Real content (science, accreditations, studies) was kept.
-- Legal pages (Cookie Policy, Privacy Policy, Terms, FAQ) were **not** ported
-  over in this pass — say the word and I'll add them back.
+- **Flat file structure** (`index.html`, `about.html`, `products.html`,
+  `markets.html`, `contact.html`) instead of folder + root-absolute links
+  (`/about-us/`). The original structure only works once the site sits at a
+  domain root — on a GitHub Pages project URL
+  (`username.github.io/repo-name/`) those links 404. Flat relative links work
+  in both places, so no changes are needed at the domain flip.
+- **Fixed the mobile hamburger menu** — the button existed but had no JS
+  behind it, so mobile visitors couldn't navigate. Added a working slide-out
+  panel with keyboard (Esc) and focus support.
+- **Full SEO layer**: canonical URLs, Open Graph/Twitter cards, JSON-LD
+  (Organization, Products, Breadcrumbs), `robots.txt`, `sitemap.xml`, a proper
+  favicon/icon set, and a web manifest.
+- **Accessibility**: skip-to-content link, `aria-current`/`aria-expanded`/
+  `aria-selected` on nav and tabs, focus-visible outlines, alt text audit,
+  `prefers-reduced-motion` support.
+- **Performance**: explicit `width`/`height` on every image (prevents layout
+  shift), `loading="lazy"` below the fold, WebP versions of the four hero
+  slider images.
+- Corrected the footer distributor line to **Evotek Innovations** (matches
+  the April build; the WordPress site had inconsistent attribution).
 
 ## Before you go live
 
-1. **Contact form.** `contact.html` posts to a Formspree placeholder
-   (`https://formspree.io/f/YOUR_FORM_ID`). Sign up free at
-   [formspree.io](https://formspree.io), create a form, and replace
-   `YOUR_FORM_ID` with your real endpoint. Without this, the form won't
-   deliver enquiries anywhere.
-2. **Verify the phone number and address** against current details — pulled
-   from the live site as of July 2026.
-3. Optional: add a `CNAME` file containing `goldshieldtech.co.uk` when you're
-   ready to point the domain at GitHub Pages (not included yet, per your call
-   to stay on a github.io URL for now).
+1. **Verify the phone number and address** are still current.
+2. Add a `CNAME` file containing `goldshieldtech.co.uk` when you're ready to
+   point the domain at GitHub Pages (not included yet — DNS/domain transfer
+   is in progress separately).
+3. Legal pages (Cookie Policy, Privacy Policy, Terms, FAQ) aren't ported over
+   — say the word and they can be added.
+4. Consider wiring up the EPA/FDA/EU/Goldshield accreditation logos with
+   `<picture>`/WebP if page weight becomes a concern — currently plain PNG.
+
+## Contact form
+
+`contact.html` already posts to a live Formspree endpoint
+(`https://formspree.io/f/xpwzgkqb`) — no placeholder to swap.
 
 ## Deploy to GitHub Pages
 

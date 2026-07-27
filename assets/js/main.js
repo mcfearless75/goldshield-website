@@ -1,33 +1,39 @@
 (function () {
   "use strict";
 
-  /* Flag JS availability so reveal styles only hide content when JS runs */
-  document.documentElement.classList.add("js");
-
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   document.addEventListener("DOMContentLoaded", function () {
-    initNav();
+    initMobileNav();
     initHeroSlider();
     initProductTabs();
     initReveal();
   });
 
   /* --------------------------------------------------------
-     Mobile navigation toggle
+     Mobile navigation — hamburger opens a full-screen panel
      -------------------------------------------------------- */
-  function initNav() {
-    var toggle = document.querySelector(".nav-toggle");
-    if (!toggle) return;
+  function initMobileNav() {
+    var toggle = document.querySelector(".hamburger");
+    var panel = document.querySelector(".mobile-nav");
+    if (!toggle || !panel) return;
+
+    function close() {
+      document.body.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
     toggle.addEventListener("click", function () {
       var open = document.body.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    document.querySelectorAll(".main-nav a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        document.body.classList.remove("nav-open");
-        toggle.setAttribute("aria-expanded", "false");
-      });
+
+    panel.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", close);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") close();
     });
   }
 
@@ -35,25 +41,23 @@
      Hero slider — crossfade, auto-advance, dots, pause on hover
      -------------------------------------------------------- */
   function initHeroSlider() {
-    var frame = document.querySelector(".slider-frame");
-    if (!frame) return;
-    var slides = frame.querySelectorAll(".slide");
-    var dots = frame.querySelectorAll(".slider-dot");
+    var wrap = document.getElementById("heroSlider");
+    if (!wrap) return;
+    var slides = wrap.querySelectorAll(".hero-slide");
+    var dots = wrap.querySelectorAll(".slide-dot");
     if (slides.length < 2 || dots.length !== slides.length) return;
 
-    var INTERVAL_MS = 5500;
+    var INTERVAL_MS = 5000;
     var current = 0;
     var timer = null;
 
-    function goTo(index) {
-      slides[current].classList.remove("is-active");
-      slides[current].setAttribute("aria-hidden", "true");
-      dots[current].classList.remove("is-active");
+    function go(index) {
+      slides[current].classList.remove("active");
+      dots[current].classList.remove("active");
       dots[current].removeAttribute("aria-current");
       current = (index + slides.length) % slides.length;
-      slides[current].classList.add("is-active");
-      slides[current].removeAttribute("aria-hidden");
-      dots[current].classList.add("is-active");
+      slides[current].classList.add("active");
+      dots[current].classList.add("active");
       dots[current].setAttribute("aria-current", "true");
     }
 
@@ -68,89 +72,82 @@
       stop();
       if (reducedMotion.matches) return;
       timer = setInterval(function () {
-        goTo(current + 1);
+        go(current + 1);
       }, INTERVAL_MS);
     }
 
     dots.forEach(function (dot, i) {
       dot.addEventListener("click", function () {
-        goTo(i);
+        go(i);
         start();
       });
     });
 
-    frame.addEventListener("mouseenter", stop);
-    frame.addEventListener("mouseleave", start);
-    frame.addEventListener("focusin", stop);
-    frame.addEventListener("focusout", start);
+    wrap.addEventListener("mouseenter", stop);
+    wrap.addEventListener("mouseleave", start);
+    wrap.addEventListener("focusin", stop);
+    wrap.addEventListener("focusout", start);
     document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        stop();
-      } else {
-        start();
-      }
+      if (document.hidden) stop();
+      else start();
     });
 
     start();
   }
 
   /* --------------------------------------------------------
-     Product tabs (products.html) — click a line to swap panels
+     Product tabs (homepage + products page)
      -------------------------------------------------------- */
   function initProductTabs() {
-    var tabs = document.querySelectorAll(".tab-btn");
-    var panels = document.querySelectorAll(".tab-panel");
-    if (!tabs.length || !panels.length) return;
-
-    function activate(name) {
-      tabs.forEach(function (tab) {
-        var isActive = tab.getAttribute("data-tab") === name;
-        tab.classList.toggle("is-active", isActive);
-        tab.setAttribute("aria-selected", isActive ? "true" : "false");
-      });
-      panels.forEach(function (panel) {
-        panel.classList.toggle("is-active", panel.getAttribute("data-panel") === name);
-      });
-    }
+    var tabs = document.querySelectorAll(".prod-tab");
+    if (!tabs.length) return;
 
     tabs.forEach(function (tab) {
       tab.addEventListener("click", function () {
-        activate(tab.getAttribute("data-tab"));
+        document.querySelectorAll(".prod-tab").forEach(function (t) {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
+        document.querySelectorAll(".prod-panel").forEach(function (p) {
+          p.classList.remove("active");
+        });
+        tab.classList.add("active");
+        tab.setAttribute("aria-selected", "true");
+        var panel = document.getElementById("tab-" + tab.dataset.tab);
+        if (panel) panel.classList.add("active");
       });
     });
-
-    var initial = document.querySelector(".tab-btn.is-active") || tabs[0];
-    activate(initial.getAttribute("data-tab"));
   }
 
   /* --------------------------------------------------------
-     Scroll-reveal — fade + rise once per element
+     Fade in on scroll
      -------------------------------------------------------- */
   function initReveal() {
-    var items = document.querySelectorAll(".reveal");
+    var items = document.querySelectorAll(
+      ".trust-item,.prod-card,.market-card,.accred-logos img,.contact-card,.feature-box,.sector-item,.info-block"
+    );
     if (!items.length) return;
 
     if (reducedMotion.matches || !("IntersectionObserver" in window)) {
-      items.forEach(function (el) {
-        el.classList.add("is-visible");
-      });
       return;
     }
 
-    var observer = new IntersectionObserver(
+    var obs = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.08 }
     );
 
     items.forEach(function (el) {
-      observer.observe(el);
+      el.style.cssText += "opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;";
+      obs.observe(el);
     });
   }
 })();
