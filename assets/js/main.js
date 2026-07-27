@@ -9,6 +9,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     initNav();
     initHeroSlider();
+    initProductTabs();
     initReveal();
   });
 
@@ -91,6 +92,35 @@
     });
 
     start();
+  }
+
+  /* --------------------------------------------------------
+     Product tabs (products.html) — click a line to swap panels
+     -------------------------------------------------------- */
+  function initProductTabs() {
+    var tabs = document.querySelectorAll(".tab-btn");
+    var panels = document.querySelectorAll(".tab-panel");
+    if (!tabs.length || !panels.length) return;
+
+    function activate(name) {
+      tabs.forEach(function (tab) {
+        var isActive = tab.getAttribute("data-tab") === name;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+      panels.forEach(function (panel) {
+        panel.classList.toggle("is-active", panel.getAttribute("data-panel") === name);
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        activate(tab.getAttribute("data-tab"));
+      });
+    });
+
+    var initial = document.querySelector(".tab-btn.is-active") || tabs[0];
+    activate(initial.getAttribute("data-tab"));
   }
 
   /* --------------------------------------------------------
