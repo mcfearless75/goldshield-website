@@ -120,7 +120,7 @@ export default function Contact() {
       <div className="relative flex h-80 items-center justify-center overflow-hidden bg-[#f5f3ef]">
         <div
           className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: "url(/img/legacy/world-map.jpg)" }}
+          style={{ backgroundImage: "url(/img/legacy/world-map.webp)" }}
         />
         <div className="relative z-[2] text-center">
           <div className="inline-block bg-white px-10 py-8 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">

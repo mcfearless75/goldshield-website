@@ -7,7 +7,7 @@ export function Accreditations({ withTable = false, introText }: { withTable?: b
   return (
     <section className="relative overflow-hidden bg-white px-6 py-20 text-center md:px-20">
       <Image
-        src="/img/legacy/shapre1.png"
+        src="/img/legacy/shapre1.webp"
         alt=""
         width={473}
         height={290}

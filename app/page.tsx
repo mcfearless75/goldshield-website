@@ -17,7 +17,7 @@ export default function Home() {
           <HeroSlider />
 
           <Image
-            src="/img/legacy/banner-spray-bottle.png"
+            src="/img/legacy/banner-spray-bottle.webp"
             alt=""
             width={887}
             height={931}
@@ -25,7 +25,7 @@ export default function Home() {
             className="pointer-events-none absolute left-6 top-0 z-10 hidden h-[clamp(200px,55vw,400px)] w-auto lg:left-20 lg:block lg:h-[clamp(280px,46vw,740px)]"
           />
           <Image
-            src="/img/legacy/bubbles-up.png"
+            src="/img/legacy/bubbles-up.webp"
             alt=""
             width={190}
             height={437}
@@ -51,7 +51,7 @@ export default function Home() {
             <span className="section-label">Our Technology</span>
             <h2 className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-extrabold leading-[1.15] text-ink">Goldshield® Technology</h2>
             <Image
-              src="/img/legacy/shapre1.png"
+              src="/img/legacy/shapre1.webp"
               alt="Goldshield molecule"
               width={473}
               height={290}
@@ -98,7 +98,7 @@ export default function Home() {
       <section className="relative overflow-hidden bg-cream">
         <div
           className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.12]"
-          style={{ backgroundImage: "url(/img/legacy/below_markets.jpg)" }}
+          style={{ backgroundImage: "url(/img/legacy/below_markets.webp)" }}
         />
         <div className="relative z-[2] flex flex-col items-center gap-10 px-6 py-16 md:px-20 lg:flex-row lg:py-20">
           <div className="flex-1">
@@ -111,7 +111,7 @@ export default function Home() {
             <Link href="/about" className="btn-outline">Read More</Link>
           </div>
           <div className="lg:flex-[0_0_44%]">
-            <Image src="/img/legacy/Gold-Shield-products.png" alt="Goldshield Products" width={450} height={633} loading="lazy" className="block w-full" />
+            <Image src="/img/legacy/Gold-Shield-products.webp" alt="Goldshield Products" width={450} height={633} loading="lazy" className="block w-full" />
           </div>
         </div>
       </section>

@@ -29,9 +29,9 @@ export default function About() {
       {/* PHILOSOPHY */}
       <section className="flex flex-col gap-10 bg-cream px-6 py-16 md:px-20 lg:flex-row lg:items-start lg:gap-[clamp(40px,6vw,100px)] lg:py-20">
         <div className="relative min-h-[280px] lg:max-w-[42%] lg:flex-[0_0_42%]">
-          <Image src="/img/legacy/world-map.jpg" alt="" width={1920} height={842} loading="lazy" className="w-full rounded-lg opacity-35" />
+          <Image src="/img/legacy/world-map.webp" alt="" width={1920} height={842} loading="lazy" className="w-full rounded-lg opacity-35" />
           <Image
-            src="/img/legacy/shapre1.png"
+            src="/img/legacy/shapre1.webp"
             alt="Goldshield Molecule"
             width={473}
             height={290}
@@ -51,7 +51,7 @@ export default function About() {
       {/* STORY */}
       <section className="flex flex-col gap-10 bg-white px-6 py-16 md:px-20 lg:flex-row-reverse lg:items-start lg:gap-[clamp(40px,6vw,100px)] lg:py-20">
         <div className="lg:max-w-[42%] lg:flex-[0_0_42%]">
-          <Image src="/img/legacy/Gold-Shield-products.png" alt="Goldshield Products" width={450} height={633} loading="lazy" className="mx-auto block max-h-[480px] w-auto object-contain" />
+          <Image src="/img/legacy/Gold-Shield-products.webp" alt="Goldshield Products" width={450} height={633} loading="lazy" className="mx-auto block max-h-[480px] w-auto object-contain" />
         </div>
         <div className="lg:flex-1">
           <span className="section-label">Our Story</span>
@@ -74,7 +74,7 @@ export default function About() {
         </div>
         <div className="flex items-center justify-center lg:flex-1">
           <Image
-            src="/img/legacy/the-science-img.png"
+            src="/img/legacy/the-science-img.webp"
             alt="How Goldshield works: bonds to surfaces, charges the surface, attracts and kills germs, continues to protect"
             width={1200}
             height={842}
@@ -88,7 +88,7 @@ export default function About() {
       <section className="flex flex-col gap-10 bg-white px-6 py-16 md:px-20 lg:flex-row lg:items-start lg:gap-[clamp(40px,6vw,100px)] lg:py-20">
         <div className="lg:max-w-[42%] lg:flex-[0_0_42%]">
           <Image
-            src="/img/legacy/shapre1.png"
+            src="/img/legacy/shapre1.webp"
             alt="Goldshield Molecule"
             width={473}
             height={290}
