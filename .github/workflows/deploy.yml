@@ -67,3 +67,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Ping IndexNow
+        run: |
+          curl -s -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json" \
+            -d '{
+              "host": "goldshieldtech.co.uk",
+              "key": "72d0df42abccdb50675e18b77b18c520",
+              "keyLocation": "https://goldshieldtech.co.uk/72d0df42abccdb50675e18b77b18c520.txt",
+              "urlList": [
+                "https://goldshieldtech.co.uk/",
+                "https://goldshieldtech.co.uk/about.html",
+                "https://goldshieldtech.co.uk/products.html",
+                "https://goldshieldtech.co.uk/markets.html",
+                "https://goldshieldtech.co.uk/contact.html"
+              ]
+            }' || true

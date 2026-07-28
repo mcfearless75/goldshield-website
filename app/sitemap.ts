@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return pages.map((p) => ({
     url: `${origin}${p.path}`,
+    lastModified: new Date("2026-07-28"),
     priority: p.priority,
   }));
 }
