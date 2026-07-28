@@ -2,7 +2,7 @@
   "name": "Goldshield",
   "short_name": "Goldshield",
   "icons": [
-    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ],
   "theme_color": "#daab28",
   "background_color": "#fcf7ec",
