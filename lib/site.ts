@@ -27,6 +27,7 @@ export const nav = [
   { label: "About Us", href: "/about" },
   { label: "Products", href: "/products" },
   { label: "Markets", href: "/markets" },
+  { label: "Air Conditioning", href: "/air-conditioning" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
 
@@ -188,6 +189,24 @@ export const featureBoxes = [
       "Does not pose the risk of creating \"super-bugs\"",
       "Safe for skin, surfaces and textiles",
     ],
+  },
+] as const;
+
+export const acServices = [
+  {
+    icon: "molecule",
+    title: "Component Dip Treatment",
+    desc: "Filters, coils and other removable AC components are taken out of the unit, fully immersed in Goldshield's antimicrobial solution, and reinstalled — protecting the airflow path from microbial growth for longer than standard products.",
+  },
+  {
+    icon: "wind",
+    title: "Airflow Path Protection",
+    desc: "The same covalently-bonded technology used across Goldshield's product line keeps working long after treatment, continuously protecting the surfaces air actually passes over.",
+  },
+  {
+    icon: "clock",
+    title: "Scheduled Re-Treatment",
+    desc: "AC systems are treated on a recurring schedule aligned with routine servicing, so protection never lapses between visits.",
   },
 ] as const;
 

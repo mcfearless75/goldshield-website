@@ -6,6 +6,7 @@ type IconName =
   | "mail"
   | "phone"
   | "pin"
+  | "wind"
   | "arrow"
   | "arrow-small"
   | "chevron-down";
@@ -71,6 +72,14 @@ export function Icon({ name, className }: { name: IconName; className?: string }
         <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden className={className}>
           <path d="M21 10c0 7-7 13-7 13S7 17 7 10a7 7 0 0114 0z" />
           <circle cx={14} cy={10} r={3} />
+        </svg>
+      );
+    case "wind":
+      return (
+        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden className={className}>
+          <path d="M3 9h13a3.5 3.5 0 10-3.5-3.5" />
+          <path d="M3 14h17a3.5 3.5 0 11-3.5 3.5" />
+          <path d="M3 19h11a3 3 0 10-3-3" />
         </svg>
       );
     case "arrow":

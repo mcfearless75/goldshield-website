@@ -11,12 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about.html", priority: 0.8 },
     { path: "/products.html", priority: 0.9 },
     { path: "/markets.html", priority: 0.7 },
+    { path: "/air-conditioning", priority: 0.7 },
     { path: "/contact.html", priority: 0.6 },
   ];
 
   return pages.map((p) => ({
     url: `${origin}${p.path}`,
-    lastModified: new Date("2026-07-28"),
+    lastModified: new Date("2026-08-20"),
     priority: p.priority,
   }));
 }

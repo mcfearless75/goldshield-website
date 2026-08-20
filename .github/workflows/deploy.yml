@@ -81,6 +81,7 @@ jobs:
                 "https://goldshieldtech.co.uk/about.html",
                 "https://goldshieldtech.co.uk/products.html",
                 "https://goldshieldtech.co.uk/markets.html",
+                "https://goldshieldtech.co.uk/air-conditioning",
                 "https://goldshieldtech.co.uk/contact.html"
               ]
             }' || true
