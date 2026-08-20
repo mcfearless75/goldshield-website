@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/PageHero";
 import { ContactCards } from "@/components/ContactCards";
 import { Icon } from "@/components/Icon";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
@@ -22,9 +22,36 @@ export default function AirConditioning() {
     <>
       <BreadcrumbJsonLd items={[{ name: "Home", path: "/" }, { name: "Air Conditioning", path: "/air-conditioning" }]} />
 
-      <PageHero label="Air Conditioning">
-        Protecting the <span className="text-gold">Air</span> You Breathe
-      </PageHero>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-cream px-6 pb-[72px] pt-16 md:px-20">
+        <div className="relative h-[clamp(280px,42vw,480px)] overflow-hidden rounded-[20px] shadow-[0_20px_50px_-16px_rgba(58,58,58,0.25)]">
+          <Image
+            src="/img/air-conditioning-hero.webp"
+            alt="Rows of air conditioning units mounted on a building's balconies"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-10 lg:max-w-[640px]">
+            <span className="mb-3 block text-[13px] font-semibold uppercase tracking-[0.22em] text-gold">Air Conditioning</span>
+            <h1 className="text-[clamp(1.8rem,3.8vw,3.1rem)] font-extrabold leading-[1.12] text-white">
+              Protecting the <span className="text-gold">Air</span> You Breathe
+            </h1>
+          </div>
+        </div>
+
+        <Image
+          src="/img/legacy/banner-spray-bottle.webp"
+          alt=""
+          width={887}
+          height={931}
+          priority
+          aria-hidden
+          className="pointer-events-none absolute -right-4 top-4 z-10 hidden h-[clamp(190px,26vw,360px)] w-auto rotate-[12deg] drop-shadow-[0_25px_35px_rgba(0,0,0,0.3)] md:right-6 lg:block lg:top-8"
+        />
+      </section>
 
       <div className="px-6 py-10 text-center md:px-20 lg:py-16">
         <span className="section-label">Air Handled, Air Protected</span>
