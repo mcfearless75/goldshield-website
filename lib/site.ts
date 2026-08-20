@@ -1,7 +1,7 @@
 export const site = {
   name: "Goldshield",
   registered: "GOLDSHIELD®",
-  distributor: "Evotek Innovations",
+  distributor: "Atroum GS",
   domain: "goldshieldtech.co.uk",
   tagline:
     "The world's first antimicrobial products that fully harness the power of water and are revolutionising long-lasting protection – without all the harsh chemicals.",

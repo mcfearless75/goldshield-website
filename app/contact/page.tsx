@@ -6,7 +6,7 @@ import { site, sectorOptions } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Contact the Goldshield® team — make an enquiry, find our address, or call us. Distributed in the UK by Evotek Innovations.",
+  description: "Contact the Goldshield® team — make an enquiry, find our address, or call us. Distributed in the UK by Atroum GS.",
   alternates: { canonical: "/contact.html" },
   openGraph: {
     title: "Contact Us | Goldshield® Antimicrobial Technology",
