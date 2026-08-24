@@ -110,14 +110,14 @@ export default function Home() {
             </p>
             <Link href="/about" className="btn-outline">Read More</Link>
           </div>
-          <div className="flex items-end justify-center gap-6 lg:flex-[0_0_54%] lg:justify-center">
+          <div className="flex flex-col items-center gap-0 lg:flex-row lg:items-end lg:justify-center lg:gap-6 lg:flex-[0_0_54%]">
             <Image
               src="/img/legacy/banner-spray-bottle.webp"
               alt="Goldshield 14 Day Disinfectant & Surface Protector spray bottle"
               width={887}
               height={931}
               loading="lazy"
-              className="block w-[72%] max-w-[480px] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105"
+              className="block w-[78%] max-w-[320px] self-start ml-[8%] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 lg:w-[72%] lg:max-w-[480px] lg:self-auto lg:ml-0"
             />
             <Image
               src="/img/legacy/Surface-Protector-5L-Jerry-Can.webp"
@@ -125,7 +125,7 @@ export default function Home() {
               width={218}
               height={262}
               loading="lazy"
-              className="block w-[38%] max-w-[240px] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105"
+              className="block w-[52%] max-w-[220px] self-end -mt-14 mr-[6%] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105 lg:w-[38%] lg:max-w-[240px] lg:mt-0 lg:mr-0 lg:self-auto"
             />
           </div>
         </div>
