@@ -25,14 +25,18 @@ export function Header() {
           <Logo />
         </Link>
 
-        <nav className="hidden lg:block" aria-label="Primary">
+        {/* Switches to the mobile menu at 1450px rather than the default lg (1024px):
+            below that, this 6-item nav ("Air Conditioning" especially) wraps mid-word
+            and spills out of the fixed-height header. Verified broken at 1400px, clean
+            at 1450px. */}
+        <nav className="hidden min-[1450px]:block" aria-label="Primary">
           <ul className="flex list-none">
             {nav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
-                  className="block px-[18px] text-[15px] leading-[92px] text-black transition-colors hover:text-gold aria-[current=page]:text-gold"
+                  className="block whitespace-nowrap px-[18px] text-[15px] leading-[92px] text-black transition-colors hover:text-gold aria-[current=page]:text-gold"
                 >
                   {item.label}
                 </Link>
@@ -41,13 +45,13 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-3.5 lg:flex">
+        <div className="hidden items-center gap-3.5 min-[1450px]:flex">
           <a href={site.contact.phoneHref} className="btn-phone">{site.contact.phone}</a>
           <Link href="/contact" className="btn-enquiry">Make an Enquiry</Link>
         </div>
 
         <button
-          className="flex flex-col gap-[5px] border-none bg-none p-2 lg:hidden"
+          className="flex flex-col gap-[5px] border-none bg-none p-2 min-[1450px]:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Toggle menu"}
           aria-expanded={open}
@@ -63,7 +67,7 @@ export function Header() {
         <nav
           id="mobileNav"
           aria-label="Mobile"
-          className="fixed inset-x-0 top-[92px] bottom-0 z-[999] overflow-y-auto bg-white p-6 lg:hidden"
+          className="fixed inset-x-0 top-[92px] bottom-0 z-[999] overflow-y-auto bg-white p-6 min-[1450px]:hidden"
         >
           <ul className="grid list-none gap-1">
             {nav.map((item) => (

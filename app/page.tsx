@@ -110,8 +110,23 @@ export default function Home() {
             </p>
             <Link href="/about" className="btn-outline">Read More</Link>
           </div>
-          <div className="lg:flex-[0_0_44%]">
-            <Image src="/img/legacy/Gold-Shield-products.webp" alt="Goldshield Products" width={450} height={633} loading="lazy" className="block w-full" />
+          <div className="flex items-end justify-center gap-4 lg:flex-[0_0_44%] lg:justify-center">
+            <Image
+              src="/img/legacy/banner-spray-bottle.webp"
+              alt="Goldshield 14 Day Disinfectant & Surface Protector spray bottle"
+              width={887}
+              height={931}
+              loading="lazy"
+              className="block w-[58%] max-w-[380px] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105"
+            />
+            <Image
+              src="/img/legacy/Surface-Protector-5L-Jerry-Can.webp"
+              alt="Goldshield 14 Day Disinfectant & Surface Protector 5L container"
+              width={218}
+              height={262}
+              loading="lazy"
+              className="block w-[30%] max-w-[190px] transition-transform duration-300 ease-out hover:-translate-y-2 hover:scale-105"
+            />
           </div>
         </div>
       </section>
